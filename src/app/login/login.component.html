@@ -1,0 +1,26 @@
+<div class="container mt-4 mb-5">
+    <form class="mt-5 form-group" [formGroup]="loginForm">
+        <div>
+            <div class="col-4">
+                <label class="form-label"> User Name</label>
+                <input class="form-control" formControlName="userName" type="text">
+                <div *ngIf="submitted && lf.userName.errors" class="text-danger">
+                    <div *ngIf="lf.userName.errors?.['required']">Please enter user name</div>
+                    <div *ngIf="lf.userName.errors?.['minlength']">please enter a valid user name</div>
+                </div>
+            </div>
+            <div class="col-4">
+                <label class="form-label"> password</label>
+                <input class="form-control" formControlName="password" type="password">
+                <div *ngIf="submitted && lf.password.errors" class="text-danger">
+                    <div *ngIf="lf.password.errors?.['required']">Please enter user name</div>
+                    <div *ngIf="lf.password.errors?.['minlength']">please enter a valid user name</div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary mt-4 col-4" (click)="loginSubmit()" >Login</button>
+                <p class="col-4 text-center">Don't have an account <a routerLink="/register">Sign Up!</a></p>
+            </div>
+        </div>
+    </form>
+</div>
