@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'game-on';
   ngOnInit(): void {
-    this.router.navigate([''])
+    // this.router.navigate([''])
   }
   constructor(private router:Router){}
 
