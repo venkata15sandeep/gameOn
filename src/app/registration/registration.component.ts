@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -7,8 +9,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
+  
+  constructor(private fb : FormBuilder, private sharedService: SharedService, private router: Router){}
+
   passwordMissMatch: boolean = true;
-  constructor(private fb : FormBuilder){}
   submitted: boolean = false 
   registrationForm=this.fb.group({
     firstName: ['',[Validators.required]],
@@ -37,6 +41,14 @@ export class RegistrationComponent {
       return
     }else{
       console.log('prepare JSON')
+      const inputJson={
+        firstName: this.rf.firstName.value,
+        lastName: this.rf.lastName.value,
+        dob: this.rf.dob.value,
+        email: this.rf.email.value,
+        password: this.rf.password.value
+      }
+      this.router.navigate(['/login'])
     }
   }
 }
